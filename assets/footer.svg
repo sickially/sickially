@@ -69,15 +69,6 @@
   </style>
   
   <rect class="footer-bg" width="900" height="140" fill="url(#footerGrad)"/>
-  
-  <!-- Trans flag stripe at top -->
-  <g class="trans-stripe">
-    <rect x="0" y="0" width="900" height="2.5" fill="#5BCEFA" opacity="0.6"/>
-    <rect x="0" y="2.5" width="900" height="2.5" fill="#F5A9B8" opacity="0.6"/>
-    <rect x="0" y="5" width="900" height="2.5" fill="#FFFFFF" opacity="0.6"/>
-    <rect x="0" y="7.5" width="900" height="2.5" fill="#F5A9B8" opacity="0.6"/>
-    <rect x="0" y="10" width="900" height="2.5" fill="#5BCEFA" opacity="0.6"/>
-  </g>
 
   <!-- Seigaiha wave pattern at bottom -->
   <g class="wave-pattern">
