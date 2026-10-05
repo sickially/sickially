@@ -3,7 +3,7 @@
 <!-- HEADER BANNER -->
 <img src="./assets/header.svg" alt="sickially — Japanese Style Header" width="100%"/>
 
-<hr style="border: none; height: 2px; background-color: #DB1C0D; border-radius: 5px; margin: 20px 0;" />
+<img src="./assets/hr-japanese.svg" alt="Divider" width="100%"/>
 
 <!-- TYPING SVG -->
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Noto+Serif&size=22&duration=3500&pause=1200&color=DB1C0D&center=true&vCenter=true&multiline=true&repeat=true&width=700&height=60&lines=%E4%B8%83%E8%BB%A2%E3%81%B3%E5%85%AB%E8%B5%B7%E3%81%8D+%E2%80%94+Fall+seven+times%2C+stand+up+eight;%E4%B8%80%E6%9C%9F%E4%B8%80%E4%BC%9A+%E2%80%94+Every+encounter+is+once+in+a+lifetime;%E8%8A%B1%E3%82%88%E3%82%8A%E5%9B%A3%E5%AD%90+%E2%80%94+Dumplings+over+flowers)](https://git.io/typing-svg)
@@ -73,7 +73,7 @@
 
 </div>
 
-<hr style="border: none; height: 2px; background-color: #DB1C0D; border-radius: 5px; margin: 20px 0;" />
+<img src="./assets/hr-japanese.svg" alt="Divider" width="100%"/>
 
 <!-- SNAKE CONTRIBUTION -->
 <div align="center">
@@ -84,7 +84,7 @@
   </picture>
 </div>
 
-<hr style="border: none; height: 2px; background-color: #DB1C0D; border-radius: 5px; margin: 20px 0;" />
+<img src="./assets/hr-japanese.svg" alt="Divider" width="100%"/>
 
 <!-- FOOTER -->
 <img src="./assets/footer.svg" alt="Footer" width="100%"/>
