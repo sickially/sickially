@@ -84,5 +84,7 @@
   </picture>
 </div>
 
+<hr style="border: none; height: 2px; background-color: #DB1C0D; border-radius: 5px; margin: 20px 0;" />
+
 <!-- FOOTER -->
 <img src="./assets/footer.svg" alt="Footer" width="100%"/>
