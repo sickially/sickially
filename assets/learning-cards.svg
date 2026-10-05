@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 130" width="900" height="130">
+  <style>
+    @keyframes unfurl {
+      0% { transform: scaleY(0); opacity: 0; }
+      100% { transform: scaleY(1); opacity: 1; }
+    }
+    @keyframes inkFill {
+      0% { width: 0; opacity: 0.6; }
+      100% { opacity: 0.8; }
+    }
+    @keyframes inkFill1 { 0% { width: 0; } 100% { width: 140px; } }
+    @keyframes inkFill2 { 0% { width: 0; } 100% { width: 100px; } }
+    @keyframes inkFill3 { 0% { width: 0; } 100% { width: 80px; } }
+    @keyframes brushPulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+    @keyframes dotPulse {
+      0%, 100% { r: 3; opacity: 0.6; }
+      50% { r: 4; opacity: 1; }
+    }
+    
+    .learn-bg {
+      fill: #0d0d0d;
+      stroke: #1a1111;
+      stroke-width: 1;
+      rx: 3;
+      transform-origin: top center;
+    }
+    .l1 { animation: unfurl 0.5s ease-out 0.1s both; }
+    .l2 { animation: unfurl 0.5s ease-out 0.3s both; }
+    .l3 { animation: unfurl 0.5s ease-out 0.5s both; }
+    
+    .learn-top {
+      fill: #DB1C0D;
+      opacity: 0.7;
+    }
+    .learn-label {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 16px;
+      fill: #ffffff;
+      letter-spacing: 1px;
+    }
+    .learn-kanji {
+      font-family: 'Segoe UI', serif;
+      font-size: 11px;
+      fill: #DB1C0D;
+      opacity: 0.4;
+    }
+    .progress-bg {
+      fill: #1a1010;
+      rx: 2;
+    }
+    .progress-1 {
+      fill: #DB1C0D;
+      rx: 2;
+      opacity: 0.8;
+      animation: inkFill1 2.5s ease-out 0.8s both, brushPulse 3s ease-in-out 3s infinite;
+    }
+    .progress-2 {
+      fill: #DB1C0D;
+      rx: 2;
+      opacity: 0.8;
+      animation: inkFill2 2.5s ease-out 1s both, brushPulse 3s ease-in-out 3.5s infinite;
+    }
+    .progress-3 {
+      fill: #DB1C0D;
+      rx: 2;
+      opacity: 0.8;
+      animation: inkFill3 2.5s ease-out 1.2s both, brushPulse 3s ease-in-out 4s infinite;
+    }
+    .status {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11px;
+      fill: #DB1C0D;
+      opacity: 0.6;
+      letter-spacing: 2px;
+    }
+    .status-dot {
+      fill: #DB1C0D;
+      animation: dotPulse 1.5s ease-in-out infinite;
+    }
+  </style>
+
+  <!-- Ruby -->
+  <g class="l1">
+    <rect class="learn-bg" x="15" y="10" width="270" height="110"/>
+    <rect class="learn-top" x="15" y="10" width="270" height="3"/>
+    <text x="35" y="45" font-size="20">💎</text>
+    <text class="learn-label" x="60" y="45">Ruby</text>
+    <text class="learn-kanji" x="110" y="45">ルビー</text>
+    <rect class="progress-bg" x="35" y="60" width="230" height="6"/>
+    <rect class="progress-1" x="35" y="60" width="0" height="6"/>
+    <circle class="status-dot" cx="35" cy="90" r="3"/>
+    <text class="status" x="45" y="93">修行中...</text>
+  </g>
+
+  <!-- Python -->
+  <g class="l2">
+    <rect class="learn-bg" x="315" y="10" width="270" height="110"/>
+    <rect class="learn-top" x="315" y="10" width="270" height="3"/>
+    <text x="335" y="45" font-size="20">🐍</text>
+    <text class="learn-label" x="360" y="45">Python</text>
+    <text class="learn-kanji" x="425" y="45">パイソン</text>
+    <rect class="progress-bg" x="335" y="60" width="230" height="6"/>
+    <rect class="progress-2" x="335" y="60" width="0" height="6"/>
+    <circle class="status-dot" cx="335" cy="90" r="3" style="animation-delay: 0.5s"/>
+    <text class="status" x="345" y="93">修行中...</text>
+  </g>
+
+  <!-- Svelte -->
+  <g class="l3">
+    <rect class="learn-bg" x="615" y="10" width="270" height="110"/>
+    <rect class="learn-top" x="615" y="10" width="270" height="3"/>
+    <text x="635" y="45" font-size="20">🔥</text>
+    <text class="learn-label" x="660" y="45">Svelte</text>
+    <text class="learn-kanji" x="720" y="45">スベルト</text>
+    <rect class="progress-bg" x="635" y="60" width="230" height="6"/>
+    <rect class="progress-3" x="635" y="60" width="0" height="6"/>
+    <circle class="status-dot" cx="635" cy="90" r="3" style="animation-delay: 1s"/>
+    <text class="status" x="645" y="93">修行中...</text>
+  </g>
+</svg>

@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" width="900" height="200">
+  <style>
+    @keyframes scrollUnfurl {
+      0% { transform: scaleY(0); opacity: 0; }
+      100% { transform: scaleY(1); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(8px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes brushAccent {
+      0% { transform: scaleX(0); }
+      100% { transform: scaleX(1); }
+    }
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+    
+    .card-bg {
+      fill: #0d0d0d;
+      stroke: #1a1111;
+      stroke-width: 1;
+      rx: 3;
+      transform-origin: top center;
+    }
+    .card1 { animation: scrollUnfurl 0.6s ease-out 0.2s both; }
+    .card2 { animation: scrollUnfurl 0.6s ease-out 0.4s both; }
+    .card3 { animation: scrollUnfurl 0.6s ease-out 0.6s both; }
+    
+    .card-top-border {
+      fill: #DB1C0D;
+      opacity: 0.7;
+    }
+    
+    .card-title {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 13px;
+      fill: #DB1C0D;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .card-kanji {
+      font-family: 'Segoe UI', serif;
+      font-size: 11px;
+      fill: #DB1C0D;
+      opacity: 0.4;
+    }
+    .card-item {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 14px;
+      fill: #cccccc;
+    }
+    .card-icon {
+      animation: gentleFloat 3s ease-in-out infinite;
+    }
+    .delay1 { animation-delay: 0s; }
+    .delay2 { animation-delay: 0.5s; }
+    .delay3 { animation-delay: 1s; }
+
+    .brush-underline {
+      fill: #DB1C0D;
+      opacity: 0.3;
+      transform-origin: left center;
+      animation: brushAccent 0.8s ease-out 0.8s both;
+    }
+
+    .watermark {
+      font-size: 80px;
+      fill: #DB1C0D;
+      opacity: 0.04;
+      font-family: 'Georgia', serif;
+    }
+  </style>
+
+  <!-- Card 1: Languages (言語) -->
+  <g class="card1">
+    <rect class="card-bg" x="15" y="10" width="270" height="180"/>
+    <rect class="card-top-border" x="15" y="10" width="270" height="3"/>
+    <text class="watermark" x="90" y="150">言</text>
+    
+    <text class="card-title" x="30" y="40">Languages</text>
+    <text class="card-kanji" x="155" y="40">言語</text>
+    <rect class="brush-underline" x="30" y="45" width="90" height="2" rx="1"/>
+    
+    <g class="card-icon delay1">
+      <text x="40" y="80" font-size="16">🟧</text>
+      <text class="card-item" x="65" y="80">HTML5</text>
+    </g>
+    <g class="card-icon delay2">
+      <text x="40" y="110" font-size="16">🔵</text>
+      <text class="card-item" x="65" y="110">CSS3</text>
+    </g>
+    <g class="card-icon delay3">
+      <text x="40" y="140" font-size="16">🟡</text>
+      <text class="card-item" x="65" y="140">JavaScript</text>
+    </g>
+  </g>
+
+  <!-- Card 2: Framework (骨組み) -->
+  <g class="card2">
+    <rect class="card-bg" x="315" y="10" width="270" height="180"/>
+    <rect class="card-top-border" x="315" y="10" width="270" height="3"/>
+    <text class="watermark" x="390" y="150">骨</text>
+
+    <text class="card-title" x="330" y="40">Framework</text>
+    <text class="card-kanji" x="450" y="40">骨組み</text>
+    <rect class="brush-underline" x="330" y="45" width="90" height="2" rx="1"/>
+    
+    <g class="card-icon delay1">
+      <text x="340" y="80" font-size="16">⚛️</text>
+      <text class="card-item" x="365" y="80">React</text>
+    </g>
+  </g>
+
+  <!-- Card 3: Tools (道具) -->
+  <g class="card3">
+    <rect class="card-bg" x="615" y="10" width="270" height="180"/>
+    <rect class="card-top-border" x="615" y="10" width="270" height="3"/>
+    <text class="watermark" x="690" y="150">具</text>
+
+    <text class="card-title" x="630" y="40">Tools</text>
+    <text class="card-kanji" x="705" y="40">道具</text>
+    <rect class="brush-underline" x="630" y="45" width="60" height="2" rx="1"/>
+    
+    <g class="card-icon delay1">
+      <text x="640" y="80" font-size="16">💻</text>
+      <text class="card-item" x="665" y="80">VS Code</text>
+    </g>
+    <g class="card-icon delay2">
+      <text x="640" y="110" font-size="16">🚀</text>
+      <text class="card-item" x="665" y="110">Antigravity</text>
+    </g>
+    <g class="card-icon delay3">
+      <text x="640" y="140" font-size="16">🔀</text>
+      <text class="card-item" x="665" y="140">Git</text>
+    </g>
+  </g>
+</svg>
