@@ -84,5 +84,7 @@
   </picture>
 </div>
 
+<img src="./assets/hr-japanese.svg" alt="Divider" width="100%"/>
+
 <!-- FOOTER -->
 <img src="./assets/footer.svg" alt="Footer" width="100%"/>
