@@ -1,123 +1,115 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 130" width="900" height="130">
-  <style>
-    @keyframes unfurl {
-      0% { transform: scaleY(0); opacity: 0; }
-      100% { transform: scaleY(1); opacity: 1; }
-    }
-    @keyframes inkFill {
-      0% { width: 0; opacity: 0.6; }
-      100% { opacity: 0.8; }
-    }
-    @keyframes inkFill1 { 0% { width: 0; } 100% { width: 140px; } }
-    @keyframes inkFill2 { 0% { width: 0; } 100% { width: 100px; } }
-    @keyframes inkFill3 { 0% { width: 0; } 100% { width: 80px; } }
-    @keyframes brushPulse {
-      0%, 100% { opacity: 0.7; }
-      50% { opacity: 1; }
-    }
-    @keyframes dotPulse {
-      0%, 100% { r: 3; opacity: 0.6; }
-      50% { r: 4; opacity: 1; }
-    }
-    
-    .learn-bg {
-      fill: #0d0d0d;
-      stroke: #1a1111;
-      stroke-width: 1;
-      rx: 3;
-      transform-origin: top center;
-    }
-    .l1 { animation: unfurl 0.5s ease-out 0.1s both; }
-    .l2 { animation: unfurl 0.5s ease-out 0.3s both; }
-    .l3 { animation: unfurl 0.5s ease-out 0.5s both; }
-    
-    .learn-top {
-      fill: #DB1C0D;
-      opacity: 0.7;
-    }
-    .learn-label {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: 16px;
-      fill: #ffffff;
-      letter-spacing: 1px;
-    }
-    .learn-kanji {
-      font-family: 'Segoe UI', serif;
-      font-size: 11px;
-      fill: #DB1C0D;
-      opacity: 0.4;
-    }
-    .progress-bg {
-      fill: #1a1010;
-      rx: 2;
-    }
-    .progress-1 {
-      fill: #DB1C0D;
-      rx: 2;
-      opacity: 0.8;
-      animation: inkFill1 2.5s ease-out 0.8s both, brushPulse 3s ease-in-out 3s infinite;
-    }
-    .progress-2 {
-      fill: #DB1C0D;
-      rx: 2;
-      opacity: 0.8;
-      animation: inkFill2 2.5s ease-out 1s both, brushPulse 3s ease-in-out 3.5s infinite;
-    }
-    .progress-3 {
-      fill: #DB1C0D;
-      rx: 2;
-      opacity: 0.8;
-      animation: inkFill3 2.5s ease-out 1.2s both, brushPulse 3s ease-in-out 4s infinite;
-    }
-    .status {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: 11px;
-      fill: #DB1C0D;
-      opacity: 0.6;
-      letter-spacing: 2px;
-    }
-    .status-dot {
-      fill: #DB1C0D;
-      animation: dotPulse 1.5s ease-in-out infinite;
-    }
-  </style>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
 
-  <!-- Ruby -->
-  <g class="l1">
-    <rect class="learn-bg" x="15" y="10" width="270" height="110"/>
-    <rect class="learn-top" x="15" y="10" width="270" height="3"/>
-    <text x="35" y="45" font-size="20">💎</text>
-    <text class="learn-label" x="60" y="45">Ruby</text>
-    <text class="learn-kanji" x="110" y="45">ルビー</text>
-    <rect class="progress-bg" x="35" y="60" width="230" height="6"/>
-    <rect class="progress-1" x="35" y="60" width="0" height="6"/>
-    <circle class="status-dot" cx="35" cy="90" r="3"/>
-    <text class="status" x="45" y="93">修行中...</text>
+      .card-bg { fill: #0d0b12; stroke: #201a2d; stroke-width: 1; }
+      .card-accent { fill: #9B72CF; }
+      .title { font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 11px; font-weight: 700; fill: #cccccc; letter-spacing: 1.5px; }
+      .subtitle { font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 8.5px; fill: #B48EE0; opacity: 0.5; }
+      .emoji { font-size: 13px; }
+      .progress-bg { fill: #1a1520; rx: 3; }
+      .progress-fill { fill: #9B72CF; rx: 3; }
+      .status-text { font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 8.5px; fill: #9B72CF; opacity: 0.7; }
+
+      /* Unfurl animation staggered */
+      @keyframes unfurl {
+        0% { opacity: 0; transform: scaleY(0.3) translateY(-15px); }
+        60% { opacity: 1; transform: scaleY(1.02) translateY(1px); }
+        100% { opacity: 1; transform: scaleY(1) translateY(0); }
+      }
+      .card-1 { animation: unfurl 0.7s ease-out forwards; transform-origin: top center; }
+      .card-2 { animation: unfurl 0.7s 0.18s ease-out forwards; opacity: 0; transform-origin: top center; }
+      .card-3 { animation: unfurl 0.7s 0.36s ease-out forwards; opacity: 0; transform-origin: top center; }
+
+      /* Progress bar fill animation */
+      @keyframes fillBar1 {
+        0% { width: 0; }
+        100% { width: 140px; }
+      }
+      @keyframes fillBar2 {
+        0% { width: 0; }
+        100% { width: 100px; }
+      }
+      @keyframes fillBar3 {
+        0% { width: 0; }
+        100% { width: 80px; }
+      }
+      .bar-fill-1 { animation: fillBar1 1.2s 0.8s ease-out forwards; width: 0; }
+      .bar-fill-2 { animation: fillBar2 1.2s 1.0s ease-out forwards; width: 0; }
+      .bar-fill-3 { animation: fillBar3 1.2s 1.2s ease-out forwards; width: 0; }
+
+      /* Pulsing status dot */
+      @keyframes pulse {
+        0%, 100% { opacity: 0.4; r: 3; }
+        50% { opacity: 1; r: 4; }
+      }
+      .pulse-dot { fill: #9B72CF; animation: pulse 2s ease-in-out infinite; }
+
+      /* Progress bar shimmer */
+      @keyframes shimmer {
+        0% { opacity: 0.8; }
+        50% { opacity: 1; }
+        100% { opacity: 0.8; }
+      }
+      .bar-shimmer { animation: shimmer 2.5s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- ======== CARD 1: Ruby ======== -->
+  <g class="card-1">
+    <rect x="10" y="10" width="280" height="110" class="card-bg" rx="10"/>
+    <rect x="10" y="10" width="280" height="3" class="card-accent" rx="10"/>
+
+    <!-- Title row -->
+    <text x="30" y="40" class="emoji">💎</text>
+    <text x="52" y="39" class="title">RUBY</text>
+    <text x="90" y="39" class="subtitle">ルビー</text>
+
+    <!-- Progress bar -->
+    <rect x="30" y="55" width="230" height="8" class="progress-bg" rx="3"/>
+    <rect x="30" y="55" height="8" class="progress-fill bar-fill-1 bar-shimmer" rx="3"/>
+
+    <!-- Status -->
+    <circle cx="38" cy="85" r="3" class="pulse-dot"/>
+    <text x="48" y="88" class="status-text">修行中...</text>
   </g>
 
-  <!-- Python -->
-  <g class="l2">
-    <rect class="learn-bg" x="315" y="10" width="270" height="110"/>
-    <rect class="learn-top" x="315" y="10" width="270" height="3"/>
-    <text x="335" y="45" font-size="20">🐍</text>
-    <text class="learn-label" x="360" y="45">Python</text>
-    <text class="learn-kanji" x="425" y="45">パイソン</text>
-    <rect class="progress-bg" x="335" y="60" width="230" height="6"/>
-    <rect class="progress-2" x="335" y="60" width="0" height="6"/>
-    <circle class="status-dot" cx="335" cy="90" r="3" style="animation-delay: 0.5s"/>
-    <text class="status" x="345" y="93">修行中...</text>
+  <!-- ======== CARD 2: Python ======== -->
+  <g class="card-2">
+    <rect x="310" y="10" width="280" height="110" class="card-bg" rx="10"/>
+    <rect x="310" y="10" width="280" height="3" class="card-accent" rx="10"/>
+
+    <!-- Title row -->
+    <text x="330" y="40" class="emoji">🐍</text>
+    <text x="352" y="39" class="title">PYTHON</text>
+    <text x="405" y="39" class="subtitle">パイソン</text>
+
+    <!-- Progress bar -->
+    <rect x="330" y="55" width="230" height="8" class="progress-bg" rx="3"/>
+    <rect x="330" y="55" height="8" class="progress-fill bar-fill-2 bar-shimmer" rx="3"/>
+
+    <!-- Status -->
+    <circle cx="338" cy="85" r="3" class="pulse-dot"/>
+    <text x="348" y="88" class="status-text">修行中...</text>
   </g>
 
-  <!-- Svelte -->
-  <g class="l3">
-    <rect class="learn-bg" x="615" y="10" width="270" height="110"/>
-    <rect class="learn-top" x="615" y="10" width="270" height="3"/>
-    <text x="635" y="45" font-size="20">🔥</text>
-    <text class="learn-label" x="660" y="45">Svelte</text>
-    <text class="learn-kanji" x="720" y="45">スベルト</text>
-    <rect class="progress-bg" x="635" y="60" width="230" height="6"/>
-    <rect class="progress-3" x="635" y="60" width="0" height="6"/>
-    <circle class="status-dot" cx="635" cy="90" r="3" style="animation-delay: 1s"/>
-    <text class="status" x="645" y="93">修行中...</text>
+  <!-- ======== CARD 3: Svelte ======== -->
+  <g class="card-3">
+    <rect x="610" y="10" width="280" height="110" class="card-bg" rx="10"/>
+    <rect x="610" y="10" width="280" height="3" class="card-accent" rx="10"/>
+
+    <!-- Title row -->
+    <text x="630" y="40" class="emoji">🔥</text>
+    <text x="652" y="39" class="title">SVELTE</text>
+    <text x="705" y="39" class="subtitle">スベルト</text>
+
+    <!-- Progress bar -->
+    <rect x="630" y="55" width="230" height="8" class="progress-bg" rx="3"/>
+    <rect x="630" y="55" height="8" class="progress-fill bar-fill-3 bar-shimmer" rx="3"/>
+
+    <!-- Status -->
+    <circle cx="638" cy="85" r="3" class="pulse-dot"/>
+    <text x="648" y="88" class="status-text">修行中...</text>
   </g>
 </svg>

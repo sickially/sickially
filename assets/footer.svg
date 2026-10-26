@@ -1,105 +1,98 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 140" width="900" height="140">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 130" width="900" height="130">
   <defs>
-    <linearGradient id="footerGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0d0505"/>
-      <stop offset="100%" stop-color="#0a0a0a"/>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
+
+      .main-text { font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 11px; fill: #555; letter-spacing: 5px; text-transform: uppercase; font-weight: 600; }
+      .proverb { font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 10px; fill: #B48EE0; opacity: 0.4; }
+      .brand { font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 9px; fill: #9B72CF; opacity: 0.6; letter-spacing: 3px; }
+      .blossom { font-size: 16px; }
+
+      /* Heartbeat on blossom */
+      @keyframes heartbeat {
+        0%, 100% { transform: scale(1); opacity: 0.8; }
+        15% { transform: scale(1.15); opacity: 1; }
+        30% { transform: scale(1); opacity: 0.8; }
+        45% { transform: scale(1.1); opacity: 1; }
+        60% { transform: scale(1); opacity: 0.8; }
+      }
+      .heartbeat { animation: heartbeat 3s ease-in-out infinite; transform-origin: center; }
+
+      /* Floating petals */
+      @keyframes floatPetal1 {
+        0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+        10% { opacity: 0.25; }
+        90% { opacity: 0.25; }
+        100% { transform: translate(-60px, 80px) rotate(180deg); opacity: 0; }
+      }
+      @keyframes floatPetal2 {
+        0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+        10% { opacity: 0.18; }
+        90% { opacity: 0.18; }
+        100% { transform: translate(40px, 90px) rotate(-150deg); opacity: 0; }
+      }
+      @keyframes floatPetal3 {
+        0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+        10% { opacity: 0.15; }
+        90% { opacity: 0.15; }
+        100% { transform: translate(-30px, 70px) rotate(200deg); opacity: 0; }
+      }
+      @keyframes floatPetal4 {
+        0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+        10% { opacity: 0.2; }
+        90% { opacity: 0.2; }
+        100% { transform: translate(50px, 85px) rotate(-120deg); opacity: 0; }
+      }
+      .petal-1 { animation: floatPetal1 12s 0s ease-in-out infinite; }
+      .petal-2 { animation: floatPetal2 14s 3s ease-in-out infinite; }
+      .petal-3 { animation: floatPetal3 11s 6s ease-in-out infinite; }
+      .petal-4 { animation: floatPetal4 13s 2s ease-in-out infinite; }
+
+      /* Fade in */
+      @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      .fade-in { animation: fadeIn 1.2s ease-out forwards; }
+      .fade-in-delay { animation: fadeIn 1.2s 0.3s ease-out forwards; opacity: 0; }
+      .fade-in-delay2 { animation: fadeIn 1.2s 0.6s ease-out forwards; opacity: 0; }
+    </style>
+
+    <!-- Gradient background -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d0b12"/>
+      <stop offset="100%" stop-color="#0C0A10"/>
     </linearGradient>
   </defs>
-  <style>
-    @keyframes fadeUp {
-      0% { transform: translateY(10px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-    @keyframes sakuraFloat {
-      0%   { transform: translate(0, 0) rotate(0deg); opacity: 0.6; }
-      50%  { transform: translate(15px, -8px) rotate(180deg); opacity: 0.4; }
-      100% { transform: translate(30px, 0) rotate(360deg); opacity: 0.6; }
-    }
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      15% { transform: scale(1.2); }
-      30% { transform: scale(1); }
-      45% { transform: scale(1.15); }
-    }
-    @keyframes waveScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-80px); }
-    }
-    
-    .footer-bg { rx: 8; }
-    
-    .trans-stripe { animation: fadeUp 0.5s ease-out both; }
-    
-    .footer-text {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: 13px;
-      fill: #555;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      animation: fadeUp 0.8s ease-out 0.3s both;
-    }
-    .footer-kanji {
-      font-family: 'Segoe UI', serif;
-      font-size: 14px;
-      fill: #DB1C0D;
-      opacity: 0.4;
-      animation: fadeUp 0.8s ease-out 0.5s both;
-    }
-    .footer-brand {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: 14px;
-      fill: #DB1C0D;
-      opacity: 0.6;
-      letter-spacing: 3px;
-      animation: fadeUp 0.8s ease-out 0.7s both;
-    }
-    .footer-heart {
-      animation: heartbeat 2s ease-in-out infinite;
-      transform-origin: center;
-    }
-    .float-petal {
-      fill: #DB1C0D;
-      animation: sakuraFloat 8s ease-in-out infinite;
-    }
-    
-    .wave-pattern {
-      opacity: 0.06;
-      animation: waveScroll 8s linear infinite;
-    }
-  </style>
-  
-  <rect class="footer-bg" width="900" height="140" fill="url(#footerGrad)"/>
 
-  <!-- Seigaiha wave pattern at bottom -->
-  <g class="wave-pattern">
-    <g transform="translate(0, 120)">
-      <circle cx="0" cy="0" r="18" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-      <circle cx="0" cy="0" r="12" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-      <circle cx="36" cy="0" r="18" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-      <circle cx="36" cy="0" r="12" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-      <circle cx="72" cy="0" r="18" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-      <circle cx="72" cy="0" r="12" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-      <circle cx="108" cy="0" r="18" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-      <circle cx="108" cy="0" r="12" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-      <circle cx="144" cy="0" r="18" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-      <circle cx="144" cy="0" r="12" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-      <circle cx="180" cy="0" r="18" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-      <circle cx="180" cy="0" r="12" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-    </g>
+  <!-- Background -->
+  <rect width="900" height="130" fill="url(#bgGrad)" rx="10"/>
+
+  <!-- Floating petals (subtle purple) -->
+  <g class="petal-1">
+    <ellipse cx="150" cy="10" rx="3" ry="5" fill="#C9A8F0" opacity="0.2" transform="rotate(25 150 10)"/>
   </g>
-  
-  <!-- Floating petals -->
-  <ellipse class="float-petal" cx="100" cy="70" rx="3" ry="5" opacity="0.15"/>
-  <ellipse class="float-petal" cx="750" cy="50" rx="4" ry="5" opacity="0.1" style="animation-delay: 2s"/>
-  <ellipse class="float-petal" cx="400" cy="90" rx="3" ry="4" opacity="0.12" style="animation-delay: 4s"/>
-  
-  <!-- Content -->
-  <text class="footer-text" x="450" y="52" text-anchor="middle">TAKE YOUR TIME · NEVER STOP LEARNING</text>
-  <text class="footer-kanji" x="450" y="75" text-anchor="middle">七転び八起き — Fall seven times, stand up eight</text>
-  
-  <g class="footer-heart" transform="translate(450, 98)">
-    <text text-anchor="middle" font-size="16" fill="#DB1C0D">🌸</text>
+  <g class="petal-2">
+    <ellipse cx="680" cy="5" rx="2.5" ry="4.5" fill="#B48EE0" opacity="0.15" transform="rotate(-15 680 5)"/>
   </g>
-  
-  <text class="footer-brand" x="450" y="128" text-anchor="middle">SICKIALLY © 2026</text>
+  <g class="petal-3">
+    <ellipse cx="400" cy="8" rx="2" ry="4" fill="#C9A8F0" opacity="0.15" transform="rotate(40 400 8)"/>
+  </g>
+  <g class="petal-4">
+    <ellipse cx="820" cy="12" rx="2.5" ry="4" fill="#9B72CF" opacity="0.18" transform="rotate(-30 820 12)"/>
+  </g>
+
+  <!-- Main text -->
+  <text x="450" y="38" text-anchor="middle" class="main-text fade-in">TAKE YOUR TIME · NEVER STOP LEARNING</text>
+
+  <!-- Japanese proverb -->
+  <text x="450" y="62" text-anchor="middle" class="proverb fade-in-delay">七転び八起き — Fall seven times, stand up eight</text>
+
+  <!-- Blossom emoji with heartbeat -->
+  <g class="heartbeat fade-in-delay">
+    <text x="450" y="88" text-anchor="middle" class="blossom">🌸</text>
+  </g>
+
+  <!-- Brand -->
+  <text x="450" y="115" text-anchor="middle" class="brand fade-in-delay2">SICKIALLY © 2026</text>
 </svg>

@@ -1,317 +1,241 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 350" width="900" height="350">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" width="900" height="320">
   <defs>
-    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0a0a0a"/>
-      <stop offset="100%" stop-color="#1a0505"/>
+    <!-- Rounded corners clip -->
+    <clipPath id="roundedCorners">
+      <rect width="900" height="320" rx="12" ry="12"/>
+    </clipPath>
+
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0C0A10"/>
+      <stop offset="100%" stop-color="#12101A"/>
     </linearGradient>
-    <filter id="inkBlur">
-      <feGaussianBlur stdDeviation="1.5"/>
+
+    <!-- Moon glow -->
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#B48EE0" stop-opacity="0.25"/>
+      <stop offset="60%" stop-color="#9B72CF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#9B72CF" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Moon inner gradient -->
+    <radialGradient id="moonFace" cx="40%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#C9A8F0"/>
+      <stop offset="100%" stop-color="#9B72CF"/>
+    </radialGradient>
+
+    <!-- Fog gradient -->
+    <linearGradient id="fogGrad1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9B72CF" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#9B72CF" stop-opacity="0.04"/>
+      <stop offset="70%" stop-color="#B48EE0" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="#9B72CF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="fogGrad2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#B48EE0" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#B48EE0" stop-opacity="0.035"/>
+      <stop offset="60%" stop-color="#9B72CF" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="#B48EE0" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Star twinkle filter -->
+    <filter id="starSoft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="0.8"/>
     </filter>
-    <filter id="softGlow">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
+
+    <!-- Text glow filter -->
+    <filter id="textGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <clipPath id="mainClip">
-      <rect width="900" height="350" rx="8"/>
-    </clipPath>
+
+    <!-- Subtle moon halo filter -->
+    <filter id="moonHalo" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+
+    <!-- Petal shape -->
+    <path id="petal" d="M0,-4 C1.5,-3 2.5,-1 2,1.5 C1.5,3 0.5,4 0,4 C-0.5,4 -1.5,3 -2,1.5 C-2.5,-1 -1.5,-3 0,-4Z"/>
   </defs>
 
-  <style>
-    @keyframes sakuraFall1 {
-      0%   { transform: translate(0, -30px) rotate(0deg); opacity: 0; }
-      10%  { opacity: 0.9; }
-      90%  { opacity: 0.7; }
-      100% { transform: translate(60px, 380px) rotate(340deg); opacity: 0; }
-    }
-    @keyframes sakuraFall2 {
-      0%   { transform: translate(0, -30px) rotate(0deg); opacity: 0; }
-      10%  { opacity: 0.8; }
-      90%  { opacity: 0.5; }
-      100% { transform: translate(-40px, 380px) rotate(280deg); opacity: 0; }
-    }
-    @keyframes sakuraFall3 {
-      0%   { transform: translate(0, -30px) rotate(0deg); opacity: 0; }
-      10%  { opacity: 0.7; }
-      90%  { opacity: 0.4; }
-      100% { transform: translate(30px, 380px) rotate(400deg); opacity: 0; }
-    }
-    @keyframes moonGlow {
-      0%, 100% { opacity: 0.15; r: 68; }
-      50% { opacity: 0.25; r: 72; }
-    }
-    @keyframes waveShift {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-120px); }
-    }
-    @keyframes fadeUp {
-      0%   { transform: translateY(15px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-    @keyframes brushReveal {
-      0%   { transform: scaleX(0); }
-      100% { transform: scaleX(1); }
-    }
-    @keyframes fogDrift {
-      0%, 100% { transform: translateX(0); opacity: 0.06; }
-      50% { transform: translateX(30px); opacity: 0.1; }
-    }
-    @keyframes ensoSpin {
-      0%   { stroke-dashoffset: 440; }
-      100% { stroke-dashoffset: 0; }
-    }
+  <g clip-path="url(#roundedCorners)">
+    <!-- Background -->
+    <rect width="900" height="320" fill="url(#bgGrad)"/>
 
-    .petal {
-      fill: #DB1C0D;
-    }
-    .p1  { animation: sakuraFall1 8s  ease-in-out infinite; }
-    .p2  { animation: sakuraFall2 10s ease-in-out 1s infinite; }
-    .p3  { animation: sakuraFall3 9s  ease-in-out 2s infinite; }
-    .p4  { animation: sakuraFall1 11s ease-in-out 3s infinite; }
-    .p5  { animation: sakuraFall2 7s  ease-in-out 0.5s infinite; }
-    .p6  { animation: sakuraFall3 12s ease-in-out 4s infinite; }
-    .p7  { animation: sakuraFall1 9s  ease-in-out 5s infinite; }
-    .p8  { animation: sakuraFall2 10s ease-in-out 2.5s infinite; }
-    .p9  { animation: sakuraFall3 8s  ease-in-out 6s infinite; }
-    .p10 { animation: sakuraFall1 11s ease-in-out 1.5s infinite; }
-    .p11 { animation: sakuraFall2 13s ease-in-out 3.5s infinite; }
-    .p12 { animation: sakuraFall3 9s  ease-in-out 7s infinite; }
+    <!-- Subtle star field -->
+    <g opacity="0.5">
+      <circle cx="120" cy="45" r="1" fill="#C9A8F0" filter="url(#starSoft)">
+        <animate attributeName="opacity" values="0.3;0.8;0.3" dur="4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="230" cy="80" r="0.7" fill="#C9A8F0" filter="url(#starSoft)">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="3.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="680" cy="35" r="0.8" fill="#C9A8F0" filter="url(#starSoft)">
+        <animate attributeName="opacity" values="0.4;0.9;0.4" dur="5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="780" cy="70" r="0.6" fill="#C9A8F0" filter="url(#starSoft)">
+        <animate attributeName="opacity" values="0.3;0.7;0.3" dur="4.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="50" cy="100" r="0.5" fill="#C9A8F0" filter="url(#starSoft)">
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="3.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="850" cy="50" r="0.9" fill="#C9A8F0" filter="url(#starSoft)">
+        <animate attributeName="opacity" values="0.2;0.7;0.2" dur="6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="400" cy="30" r="0.6" fill="#C9A8F0" filter="url(#starSoft)">
+        <animate attributeName="opacity" values="0.4;0.8;0.4" dur="4.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="560" cy="55" r="0.7" fill="#C9A8F0" filter="url(#starSoft)">
+        <animate attributeName="opacity" values="0.3;0.9;0.3" dur="5.5s" repeatCount="indefinite"/>
+      </circle>
+    </g>
 
-    .moon-glow {
-      fill: #DB1C0D;
-      animation: moonGlow 5s ease-in-out infinite;
-    }
-    .moon {
-      fill: #DB1C0D;
-      opacity: 0.85;
-    }
+    <!-- Moon glow (large halo) -->
+    <circle cx="740" cy="85" r="60" fill="#9B72CF" opacity="0.08" filter="url(#moonHalo)"/>
 
-    .mountain {
-      fill: #111;
-    }
-    .mountain-far {
-      fill: #0e0e0e;
-    }
+    <!-- Moon -->
+    <circle cx="740" cy="85" r="22" fill="url(#moonFace)" opacity="0.9">
+      <animate attributeName="opacity" values="0.85;0.95;0.85" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Moon crescent shadow -->
+    <circle cx="748" cy="80" r="18" fill="#0C0A10" opacity="0.25"/>
 
-    .fog {
-      fill: #DB1C0D;
-      animation: fogDrift 12s ease-in-out infinite;
-    }
+    <!-- Enso circle around moon -->
+    <g opacity="0.35">
+      <circle cx="740" cy="85" r="36" fill="none" stroke="#9B72CF" stroke-width="1.2"
+              stroke-dasharray="180 30 10 5" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" from="0 740 85" to="360 740 85" dur="90s" repeatCount="indefinite"/>
+      </circle>
+    </g>
 
-    .wave-group {
-      animation: waveShift 6s linear infinite;
-    }
+    <!-- Distant mountains (simple silhouette) -->
+    <path d="M0,280 L80,230 L150,250 L250,210 L340,240 L420,215 L500,235 L580,205 L660,230 L730,220 L800,240 L900,225 L900,320 L0,320Z"
+          fill="#100e16" opacity="0.7"/>
+    <path d="M0,290 L100,255 L200,265 L300,240 L400,260 L480,245 L560,260 L650,250 L750,265 L850,255 L900,260 L900,320 L0,320Z"
+          fill="#141218" opacity="0.8"/>
 
-    .name-jp {
-      font-family: 'Segoe UI', serif;
-      font-size: 16px;
-      fill: #DB1C0D;
-      opacity: 0.6;
-      animation: fadeUp 1s ease-out 0.3s both;
-    }
-    .name-main {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: 64px;
-      fill: #ffffff;
-      font-weight: bold;
-      letter-spacing: 6px;
-      animation: fadeUp 0.8s ease-out 0.5s both;
-    }
-    .subtitle {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: 18px;
-      fill: #999;
-      letter-spacing: 8px;
-      text-transform: uppercase;
-      animation: fadeUp 0.8s ease-out 0.8s both;
-    }
-    .brush-line {
-      fill: #DB1C0D;
-      transform-origin: left center;
-      animation: brushReveal 1.2s ease-out 1s both;
-    }
-    .quote-text {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: 13px;
-      fill: #666;
-      font-style: italic;
-      animation: fadeUp 0.8s ease-out 1.2s both;
-    }
-
-    .enso {
-      fill: none;
-      stroke: #DB1C0D;
-      stroke-width: 3;
-      stroke-linecap: round;
-      stroke-dasharray: 440;
-      animation: ensoSpin 3s ease-out 0.5s both;
-      opacity: 0.2;
-    }
-
-    .torii {
-      fill: #DB1C0D;
-      animation: fadeUp 1s ease-out 0.2s both;
-    }
-    .torii-shadow {
-      fill: #1a0000;
-      animation: fadeUp 1s ease-out 0.2s both;
-    }
-  </style>
-
-  <g clip-path="url(#mainClip)">
-    <!-- Sky background -->
-    <rect width="900" height="350" fill="url(#skyGrad)" rx="8"/>
-
-    <!-- Moon glow -->
-    <circle class="moon-glow" cx="760" cy="80" r="68"/>
-    <circle class="moon" cx="760" cy="80" r="45"/>
-    <!-- Moon crater hint -->
-    <circle cx="748" cy="70" r="6" fill="#c21a0c" opacity="0.3"/>
-    <circle cx="772" cy="88" r="4" fill="#c21a0c" opacity="0.2"/>
-
-    <!-- Enso circle (decorative) -->
-    <circle class="enso" cx="760" cy="80" r="70"/>
-
-    <!-- Distant mountains -->
-    <polygon class="mountain-far" points="0,220 100,140 200,180 350,110 450,170 550,130 650,160 750,120 900,190 900,350 0,350"/>
-    <polygon class="mountain" points="0,260 80,200 180,240 300,170 420,220 520,190 650,210 780,180 900,230 900,350 0,350"/>
-
-    <!-- Fog layers -->
-    <ellipse class="fog" cx="200" cy="240" rx="250" ry="8"/>
-    <ellipse class="fog" cx="650" cy="225" rx="200" ry="6" style="animation-delay: 3s"/>
-
-    <!-- Torii gate silhouette -->
-    <g transform="translate(130, 170)">
+    <!-- Torii gate (small, subtle, single) -->
+    <g transform="translate(165, 228)" opacity="0.3">
       <!-- Pillars -->
-      <rect class="torii" x="0" y="20" width="8" height="100" rx="1"/>
-      <rect class="torii" x="82" y="20" width="8" height="100" rx="1"/>
-      <!-- Top beam (kasagi) with curve -->
-      <rect class="torii" x="-15" y="0" width="120" height="8" rx="2"/>
-      <rect class="torii" x="-10" y="8" width="110" height="5" rx="1"/>
-      <!-- Middle beam (nuki) -->
-      <rect class="torii" x="5" y="25" width="80" height="5" rx="1"/>
+      <rect x="0" y="8" width="2.5" height="28" fill="#9B72CF" rx="0.5"/>
+      <rect x="28" y="8" width="2.5" height="28" fill="#9B72CF" rx="0.5"/>
+      <!-- Top beam (kasagi) -->
+      <rect x="-4" y="0" width="38.5" height="3" fill="#9B72CF" rx="1"/>
+      <!-- Second beam (nuki) -->
+      <rect x="-1" y="8" width="32.5" height="2" fill="#9B72CF" rx="0.5"/>
     </g>
 
-    <!-- Small torii far away -->
-    <g transform="translate(600, 200) scale(0.4)" opacity="0.4">
-      <rect class="torii" x="0" y="20" width="8" height="80" rx="1"/>
-      <rect class="torii" x="72" y="20" width="8" height="80" rx="1"/>
-      <rect class="torii" x="-12" y="0" width="104" height="7" rx="2"/>
-      <rect class="torii" x="-8" y="7" width="96" height="4" rx="1"/>
-      <rect class="torii" x="5" y="22" width="70" height="4" rx="1"/>
+    <!-- Fog layers (very subtle) -->
+    <rect x="0" y="210" width="900" height="40" fill="url(#fogGrad1)" opacity="0.6">
+      <animate attributeName="opacity" values="0.4;0.7;0.4" dur="10s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="0" y="240" width="900" height="35" fill="url(#fogGrad2)" opacity="0.5">
+      <animate attributeName="opacity" values="0.5;0.3;0.5" dur="12s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Falling petals (8 petals, subtle purple) -->
+    <!-- Petal 1 -->
+    <g opacity="0.45">
+      <use href="#petal" fill="#9B72CF" transform="translate(120, -10) scale(0.9)">
+        <animateTransform attributeName="transform" type="translate" values="120,-10; 145,330" dur="14s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite" additive="sum"/>
+      </use>
+    </g>
+    <!-- Petal 2 -->
+    <g opacity="0.35">
+      <use href="#petal" fill="#B48EE0" transform="translate(300, -20) scale(0.7)">
+        <animateTransform attributeName="transform" type="translate" values="300,-20; 280,330" dur="17s" repeatCount="indefinite" begin="2s"/>
+        <animateTransform attributeName="transform" type="rotate" from="45" to="405" dur="10s" repeatCount="indefinite" additive="sum"/>
+      </use>
+    </g>
+    <!-- Petal 3 -->
+    <g opacity="0.4">
+      <use href="#petal" fill="#9B72CF" transform="translate(500, -15) scale(0.8)">
+        <animateTransform attributeName="transform" type="translate" values="500,-15; 520,330" dur="15s" repeatCount="indefinite" begin="4s"/>
+        <animateTransform attributeName="transform" type="rotate" from="90" to="-270" dur="12s" repeatCount="indefinite" additive="sum"/>
+      </use>
+    </g>
+    <!-- Petal 4 -->
+    <g opacity="0.3">
+      <use href="#petal" fill="#C9A8F0" transform="translate(700, -10) scale(0.65)">
+        <animateTransform attributeName="transform" type="translate" values="700,-10; 680,330" dur="18s" repeatCount="indefinite" begin="1s"/>
+        <animateTransform attributeName="transform" type="rotate" from="20" to="380" dur="9s" repeatCount="indefinite" additive="sum"/>
+      </use>
+    </g>
+    <!-- Petal 5 -->
+    <g opacity="0.35">
+      <use href="#petal" fill="#9B72CF" transform="translate(60, -25) scale(0.75)">
+        <animateTransform attributeName="transform" type="translate" values="60,-25; 85,330" dur="16s" repeatCount="indefinite" begin="6s"/>
+        <animateTransform attributeName="transform" type="rotate" from="180" to="540" dur="11s" repeatCount="indefinite" additive="sum"/>
+      </use>
+    </g>
+    <!-- Petal 6 -->
+    <g opacity="0.3">
+      <use href="#petal" fill="#B48EE0" transform="translate(820, -18) scale(0.7)">
+        <animateTransform attributeName="transform" type="translate" values="820,-18; 800,330" dur="19s" repeatCount="indefinite" begin="3s"/>
+        <animateTransform attributeName="transform" type="rotate" from="60" to="-300" dur="13s" repeatCount="indefinite" additive="sum"/>
+      </use>
+    </g>
+    <!-- Petal 7 -->
+    <g opacity="0.25">
+      <use href="#petal" fill="#C9A8F0" transform="translate(400, -12) scale(0.6)">
+        <animateTransform attributeName="transform" type="translate" values="400,-12; 415,330" dur="20s" repeatCount="indefinite" begin="8s"/>
+        <animateTransform attributeName="transform" type="rotate" from="120" to="480" dur="14s" repeatCount="indefinite" additive="sum"/>
+      </use>
+    </g>
+    <!-- Petal 8 -->
+    <g opacity="0.3">
+      <use href="#petal" fill="#9B72CF" transform="translate(620, -20) scale(0.7)">
+        <animateTransform attributeName="transform" type="translate" values="620,-20; 600,330" dur="16.5s" repeatCount="indefinite" begin="5s"/>
+        <animateTransform attributeName="transform" type="rotate" from="200" to="-160" dur="10.5s" repeatCount="indefinite" additive="sum"/>
+      </use>
     </g>
 
-    <!-- Seigaiha wave pattern at bottom -->
-    <g class="wave-group" opacity="0.12">
-      <g transform="translate(0, 300)">
-        <circle cx="0" cy="0" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="0" cy="0" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="0" cy="0" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="40" cy="0" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="40" cy="0" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="40" cy="0" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="80" cy="0" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="80" cy="0" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="80" cy="0" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="120" cy="0" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="120" cy="0" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="120" cy="0" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="160" cy="0" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="160" cy="0" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="160" cy="0" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="200" cy="0" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="200" cy="0" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="200" cy="0" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="240" cy="0" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="240" cy="0" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="240" cy="0" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="20" cy="18" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="20" cy="18" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="20" cy="18" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="60" cy="18" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="60" cy="18" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="60" cy="18" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="100" cy="18" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="100" cy="18" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="100" cy="18" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="140" cy="18" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="140" cy="18" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="140" cy="18" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="180" cy="18" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="180" cy="18" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="180" cy="18" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="220" cy="18" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="220" cy="18" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="220" cy="18" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-      </g>
-      <!-- Duplicate for seamless scroll -->
-      <g transform="translate(280, 300)">
-        <circle cx="0" cy="0" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="0" cy="0" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="0" cy="0" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="40" cy="0" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="40" cy="0" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="40" cy="0" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="80" cy="0" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="80" cy="0" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="80" cy="0" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="120" cy="0" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="120" cy="0" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="120" cy="0" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="160" cy="0" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="160" cy="0" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="160" cy="0" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="200" cy="0" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="200" cy="0" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="200" cy="0" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="240" cy="0" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="240" cy="0" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="240" cy="0" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="20" cy="18" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="20" cy="18" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="20" cy="18" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="60" cy="18" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="60" cy="18" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="60" cy="18" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="100" cy="18" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="100" cy="18" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="100" cy="18" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="140" cy="18" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="140" cy="18" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="140" cy="18" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="180" cy="18" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="180" cy="18" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="180" cy="18" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="220" cy="18" r="20" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="220" cy="18" r="15" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-        <circle cx="220" cy="18" r="10" fill="none" stroke="#DB1C0D" stroke-width="1"/>
-      </g>
-    </g>
+    <!-- Japanese text -->
+    <text x="450" y="95" text-anchor="middle" fill="#D4B8F0" font-family="'Noto Serif JP', 'Yu Mincho', serif" font-size="13" letter-spacing="6" opacity="0.7">
+      一期一会 — 出会いを大切に
+    </text>
 
-    <!-- Falling sakura petals -->
-    <g>
-      <ellipse class="petal p1"  cx="80"  cy="0" rx="4" ry="6" opacity="0.7"/>
-      <ellipse class="petal p2"  cx="200" cy="0" rx="3" ry="5" opacity="0.5"/>
-      <ellipse class="petal p3"  cx="350" cy="0" rx="5" ry="7" opacity="0.6"/>
-      <ellipse class="petal p4"  cx="500" cy="0" rx="3" ry="5" opacity="0.4"/>
-      <ellipse class="petal p5"  cx="620" cy="0" rx="4" ry="6" opacity="0.7"/>
-      <ellipse class="petal p6"  cx="750" cy="0" rx="3" ry="4" opacity="0.5"/>
-      <ellipse class="petal p7"  cx="150" cy="0" rx="4" ry="5" opacity="0.6"/>
-      <ellipse class="petal p8"  cx="430" cy="0" rx="5" ry="6" opacity="0.4"/>
-      <ellipse class="petal p9"  cx="560" cy="0" rx="3" ry="5" opacity="0.5"/>
-      <ellipse class="petal p10" cx="690" cy="0" rx="4" ry="6" opacity="0.3"/>
-      <ellipse class="petal p11" cx="830" cy="0" rx="3" ry="5" opacity="0.6"/>
-      <ellipse class="petal p12" cx="280" cy="0" rx="4" ry="5" opacity="0.4"/>
-    </g>
+    <!-- Thin decorative line below Japanese text -->
+    <line x1="370" y1="108" x2="530" y2="108" stroke="#9B72CF" stroke-width="0.5" opacity="0.3"/>
 
-    <!-- Text content -->
-    <text class="name-jp" x="450" y="115" text-anchor="middle">一期一会 — 出会いを大切に</text>
-    <text class="name-main" x="450" y="175" text-anchor="middle">SICKIALLY</text>
-    <rect class="brush-line" x="300" y="190" width="300" height="3" rx="1"/>
-    <text class="subtitle" x="450" y="225" text-anchor="middle">Front-End Developer</text>
-    <text class="quote-text" x="450" y="265" text-anchor="middle">"Without music, life would be a mistake."</text>
-    <text class="quote-text" x="450" y="285" text-anchor="middle" style="animation-delay: 1.5s">— Friedrich Nietzsche, Twilight of the Idols </text>
+    <!-- Main username -->
+    <text x="450" y="155" text-anchor="middle" fill="#E8DCF5" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="48" font-weight="300" letter-spacing="18">
+      SICKIALLY
+    </text>
+
+    <!-- Subtitle -->
+    <text x="450" y="185" text-anchor="middle" fill="#9B72CF" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" letter-spacing="5" font-weight="300" opacity="0.8">
+      FRONT-END DEVELOPER
+    </text>
+
+    <!-- Thin decorative line below subtitle -->
+    <line x1="390" y1="198" x2="510" y2="198" stroke="#9B72CF" stroke-width="0.5" opacity="0.25"/>
+
+    <!-- Quote -->
+    <text x="450" y="235" text-anchor="middle" fill="#C9A8F0" font-family="'Georgia', 'Noto Serif', serif" font-size="11.5" font-style="italic" opacity="0.6" letter-spacing="0.5">
+      "Without music, life would be a mistake."
+    </text>
+
+    <!-- Quote attribution -->
+    <text x="450" y="255" text-anchor="middle" fill="#9B72CF" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.5" opacity="0.4" letter-spacing="1">
+      — Friedrich Nietzsche, Twilight of the Idols
+    </text>
+
+    <!-- Bottom fade line -->
+    <line x1="100" y1="310" x2="800" y2="310" stroke="url(#fogGrad1)" stroke-width="0.5" opacity="0.4"/>
+
+    <!-- Subtle corner accents -->
+    <!-- Top-left -->
+    <path d="M20,25 L20,15 L30,15" fill="none" stroke="#9B72CF" stroke-width="0.6" opacity="0.2" stroke-linecap="round"/>
+    <!-- Top-right -->
+    <path d="M880,25 L880,15 L870,15" fill="none" stroke="#9B72CF" stroke-width="0.6" opacity="0.2" stroke-linecap="round"/>
+    <!-- Bottom-left -->
+    <path d="M20,295 L20,305 L30,305" fill="none" stroke="#9B72CF" stroke-width="0.6" opacity="0.2" stroke-linecap="round"/>
+    <!-- Bottom-right -->
+    <path d="M880,295 L880,305 L870,305" fill="none" stroke="#9B72CF" stroke-width="0.6" opacity="0.2" stroke-linecap="round"/>
   </g>
 </svg>
