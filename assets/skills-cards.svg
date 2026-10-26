@@ -1,115 +1,137 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" width="900" height="200">
   <defs>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
-
-      .card-bg { fill: #0d0b12; stroke: #201a2d; stroke-width: 1; rx: 10; }
-      .card-top-accent { fill: #9B72CF; }
-      .card-title { font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 11px; font-weight: 700; fill: #cccccc; letter-spacing: 2px; text-transform: uppercase; }
-      .card-subtitle { font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 9px; fill: #B48EE0; opacity: 0.5; }
-      .item-text { font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 11px; fill: #cccccc; }
-      .item-emoji { font-size: 13px; }
-      .watermark { font-size: 90px; fill: #9B72CF; opacity: 0.04; font-family: 'Noto Sans JP', serif; }
-      .brush-line { stroke: #9B72CF; stroke-width: 2; fill: none; opacity: 0.5; }
-
-      /* Scroll unfurl animation */
-      @keyframes unfurl {
-        0% { opacity: 0; transform: scaleY(0.3) translateY(-20px); }
-        60% { opacity: 1; transform: scaleY(1.02) translateY(1px); }
-        100% { opacity: 1; transform: scaleY(1) translateY(0); }
-      }
-      .card-1 { animation: unfurl 0.7s ease-out forwards; transform-origin: top center; }
-      .card-2 { animation: unfurl 0.7s 0.15s ease-out forwards; opacity: 0; transform-origin: top center; }
-      .card-3 { animation: unfurl 0.7s 0.3s ease-out forwards; opacity: 0; transform-origin: top center; }
-
-      /* Gentle float on icons */
-      @keyframes floatIcon {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-3px); }
-      }
-      .float-1 { animation: floatIcon 3s ease-in-out infinite; }
-      .float-2 { animation: floatIcon 3s 0.4s ease-in-out infinite; }
-      .float-3 { animation: floatIcon 3s 0.8s ease-in-out infinite; }
-
-      /* Brush underline draw */
-      @keyframes drawLine {
-        0% { stroke-dashoffset: 60; }
-        100% { stroke-dashoffset: 0; }
-      }
-      .brush-anim-1 { stroke-dasharray: 60; stroke-dashoffset: 60; animation: drawLine 0.8s 0.7s ease-out forwards; }
-      .brush-anim-2 { stroke-dasharray: 60; stroke-dashoffset: 60; animation: drawLine 0.8s 0.85s ease-out forwards; }
-      .brush-anim-3 { stroke-dasharray: 60; stroke-dashoffset: 60; animation: drawLine 0.8s 1.0s ease-out forwards; }
-    </style>
+    <linearGradient id="skillCardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#141022"/>
+      <stop offset="100%" stop-color="#110e1c"/>
+    </linearGradient>
+    <linearGradient id="topAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C084FC"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
   </defs>
 
-  <!-- ======== CARD 1: Languages ======== -->
-  <g class="card-1">
-    <rect x="10" y="10" width="280" height="180" class="card-bg" rx="10"/>
-    <!-- Top accent -->
-    <rect x="10" y="10" width="280" height="3" class="card-top-accent" rx="10"/>
-    <!-- Watermark -->
-    <text x="220" y="145" class="watermark">言</text>
-    <!-- Title -->
-    <text x="30" y="42" class="card-title">LANGUAGES</text>
-    <text x="115" y="42" class="card-subtitle">言語</text>
-    <!-- Brush underline -->
-    <path d="M30 48 Q60 51 120 47" class="brush-line brush-anim-1"/>
+  <style>
+    @keyframes skillJp {
+      0%, 42% { opacity: 1; transform: translateY(0); }
+      48%, 94% { opacity: 0; transform: translateY(-2px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes skillEn {
+      0%, 42% { opacity: 0; transform: translateY(2px); }
+      48%, 94% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(2px); }
+    }
+    .tag-jp { animation: skillJp 8s ease-in-out infinite; }
+    .tag-en { animation: skillEn 8s ease-in-out infinite; }
+
+    .card-title {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      fill: #EDE9FE;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+    .card-sub {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', serif;
+      font-size: 11px;
+      fill: #C084FC;
+      letter-spacing: 1px;
+    }
+    .skill-item {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      fill: #DDD6FE;
+    }
+    .watermark {
+      font-family: serif;
+      font-size: 85px;
+      fill: #C084FC;
+      opacity: 0.04;
+    }
+  </style>
+
+  <!-- CARD 1: Languages -->
+  <g transform="translate(15, 10)">
+    <rect width="270" height="180" rx="10" fill="url(#skillCardBg)" stroke="#2E2445" stroke-width="1.2"/>
+    <rect width="270" height="3" rx="1.5" fill="url(#topAccent)"/>
+    <text x="210" y="145" class="watermark">言</text>
+
+    <!-- Bilingual Header -->
+    <g class="tag-jp">
+      <text x="22" y="38" class="card-title">言語</text>
+      <text x="75" y="38" class="card-sub">• LANGUAGES</text>
+    </g>
+    <g class="tag-en">
+      <text x="22" y="38" class="card-title">LANGUAGES</text>
+      <text x="135" y="38" class="card-sub">• 言語</text>
+    </g>
+    <line x1="22" y1="48" x2="248" y2="48" stroke="#3D2D5E" stroke-width="1"/>
+
     <!-- Items -->
-    <g class="float-1">
-      <text x="30" y="82" class="item-emoji">🟧</text>
-      <text x="52" y="82" class="item-text">HTML5</text>
+    <g transform="translate(25, 82)">
+      <text x="0" y="0" font-size="16">🟧</text>
+      <text class="skill-item" x="26" y="-1">HTML5</text>
     </g>
-    <g class="float-2">
-      <text x="30" y="112" class="item-emoji">🔵</text>
-      <text x="52" y="112" class="item-text">CSS3</text>
+    <g transform="translate(25, 115)">
+      <text x="0" y="0" font-size="16">🔵</text>
+      <text class="skill-item" x="26" y="-1">CSS3</text>
     </g>
-    <g class="float-3">
-      <text x="30" y="142" class="item-emoji">🟡</text>
-      <text x="52" y="142" class="item-text">JavaScript</text>
+    <g transform="translate(25, 148)">
+      <text x="0" y="0" font-size="16">🟡</text>
+      <text class="skill-item" x="26" y="-1">JavaScript</text>
     </g>
   </g>
 
-  <!-- ======== CARD 2: Framework ======== -->
-  <g class="card-2">
-    <rect x="310" y="10" width="280" height="180" class="card-bg" rx="10"/>
-    <rect x="310" y="10" width="280" height="3" class="card-top-accent" rx="10"/>
-    <!-- Watermark -->
+  <!-- CARD 2: Frameworks -->
+  <g transform="translate(315, 10)">
+    <rect width="270" height="180" rx="10" fill="url(#skillCardBg)" stroke="#2E2445" stroke-width="1.2"/>
+    <rect width="270" height="3" rx="1.5" fill="url(#topAccent)"/>
     <text x="510" y="145" class="watermark">骨</text>
-    <!-- Title -->
-    <text x="330" y="42" class="card-title">FRAMEWORK</text>
-    <text x="425" y="42" class="card-subtitle">骨組み</text>
-    <!-- Brush underline -->
-    <path d="M330 48 Q360 51 430 47" class="brush-line brush-anim-2"/>
-    <!-- Items -->
-    <g class="float-1">
-      <text x="330" y="82" class="item-emoji">⚛️</text>
-      <text x="352" y="82" class="item-text">React</text>
+
+    <g class="tag-jp">
+      <text x="22" y="38" class="card-title">骨組み</text>
+      <text x="90" y="38" class="card-sub">• FRAMEWORKS</text>
+    </g>
+    <g class="tag-en">
+      <text x="22" y="38" class="card-title">FRAMEWORKS</text>
+      <text x="150" y="38" class="card-sub">• 骨組み</text>
+    </g>
+    <line x1="22" y1="48" x2="248" y2="48" stroke="#3D2D5E" stroke-width="1"/>
+
+    <g transform="translate(25, 82)">
+      <text x="0" y="0" font-size="16">⚛️</text>
+      <text class="skill-item" x="26" y="-1">React</text>
     </g>
   </g>
 
-  <!-- ======== CARD 3: Tools ======== -->
-  <g class="card-3">
-    <rect x="610" y="10" width="280" height="180" class="card-bg" rx="10"/>
-    <rect x="610" y="10" width="280" height="3" class="card-top-accent" rx="10"/>
-    <!-- Watermark -->
+  <!-- CARD 3: Tools -->
+  <g transform="translate(615, 10)">
+    <rect width="270" height="180" rx="10" fill="url(#skillCardBg)" stroke="#2E2445" stroke-width="1.2"/>
+    <rect width="270" height="3" rx="1.5" fill="url(#topAccent)"/>
     <text x="810" y="145" class="watermark">具</text>
-    <!-- Title -->
-    <text x="630" y="42" class="card-title">TOOLS</text>
-    <text x="680" y="42" class="card-subtitle">道具</text>
-    <!-- Brush underline -->
-    <path d="M630 48 Q660 51 700 47" class="brush-line brush-anim-3"/>
-    <!-- Items -->
-    <g class="float-1">
-      <text x="630" y="82" class="item-emoji">💻</text>
-      <text x="652" y="82" class="item-text">VS Code</text>
+
+    <g class="tag-jp">
+      <text x="22" y="38" class="card-title">道具</text>
+      <text x="75" y="38" class="card-sub">• TOOLS</text>
     </g>
-    <g class="float-2">
-      <text x="630" y="112" class="item-emoji">🚀</text>
-      <text x="652" y="112" class="item-text">Antigravity</text>
+    <g class="tag-en">
+      <text x="22" y="38" class="card-title">TOOLS</text>
+      <text x="95" y="38" class="card-sub">• 道具</text>
     </g>
-    <g class="float-3">
-      <text x="630" y="142" class="item-emoji">🔀</text>
-      <text x="652" y="142" class="item-text">Git</text>
+    <line x1="22" y1="48" x2="248" y2="48" stroke="#3D2D5E" stroke-width="1"/>
+
+    <g transform="translate(25, 82)">
+      <text x="0" y="0" font-size="16">💻</text>
+      <text class="skill-item" x="26" y="-1">VS Code</text>
+    </g>
+    <g transform="translate(25, 115)">
+      <text x="0" y="0" font-size="16">🚀</text>
+      <text class="skill-item" x="26" y="-1">Antigravity</text>
+    </g>
+    <g transform="translate(25, 148)">
+      <text x="0" y="0" font-size="16">🔀</text>
+      <text class="skill-item" x="26" y="-1">Git</text>
     </g>
   </g>
 </svg>

@@ -1,98 +1,60 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 130" width="900" height="130">
   <defs>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
-
-      .main-text { font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 11px; fill: #555; letter-spacing: 5px; text-transform: uppercase; font-weight: 600; }
-      .proverb { font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 10px; fill: #B48EE0; opacity: 0.4; }
-      .brand { font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 9px; fill: #9B72CF; opacity: 0.6; letter-spacing: 3px; }
-      .blossom { font-size: 16px; }
-
-      /* Heartbeat on blossom */
-      @keyframes heartbeat {
-        0%, 100% { transform: scale(1); opacity: 0.8; }
-        15% { transform: scale(1.15); opacity: 1; }
-        30% { transform: scale(1); opacity: 0.8; }
-        45% { transform: scale(1.1); opacity: 1; }
-        60% { transform: scale(1); opacity: 0.8; }
-      }
-      .heartbeat { animation: heartbeat 3s ease-in-out infinite; transform-origin: center; }
-
-      /* Floating petals */
-      @keyframes floatPetal1 {
-        0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-        10% { opacity: 0.25; }
-        90% { opacity: 0.25; }
-        100% { transform: translate(-60px, 80px) rotate(180deg); opacity: 0; }
-      }
-      @keyframes floatPetal2 {
-        0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-        10% { opacity: 0.18; }
-        90% { opacity: 0.18; }
-        100% { transform: translate(40px, 90px) rotate(-150deg); opacity: 0; }
-      }
-      @keyframes floatPetal3 {
-        0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-        10% { opacity: 0.15; }
-        90% { opacity: 0.15; }
-        100% { transform: translate(-30px, 70px) rotate(200deg); opacity: 0; }
-      }
-      @keyframes floatPetal4 {
-        0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-        10% { opacity: 0.2; }
-        90% { opacity: 0.2; }
-        100% { transform: translate(50px, 85px) rotate(-120deg); opacity: 0; }
-      }
-      .petal-1 { animation: floatPetal1 12s 0s ease-in-out infinite; }
-      .petal-2 { animation: floatPetal2 14s 3s ease-in-out infinite; }
-      .petal-3 { animation: floatPetal3 11s 6s ease-in-out infinite; }
-      .petal-4 { animation: floatPetal4 13s 2s ease-in-out infinite; }
-
-      /* Fade in */
-      @keyframes fadeIn {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
-      }
-      .fade-in { animation: fadeIn 1.2s ease-out forwards; }
-      .fade-in-delay { animation: fadeIn 1.2s 0.3s ease-out forwards; opacity: 0; }
-      .fade-in-delay2 { animation: fadeIn 1.2s 0.6s ease-out forwards; opacity: 0; }
-    </style>
-
-    <!-- Gradient background -->
-    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0d0b12"/>
-      <stop offset="100%" stop-color="#0C0A10"/>
+    <linearGradient id="footerBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#141022"/>
+      <stop offset="100%" stop-color="#0e0a17"/>
     </linearGradient>
   </defs>
 
-  <!-- Background -->
-  <rect width="900" height="130" fill="url(#bgGrad)" rx="10"/>
+  <style>
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.25); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.15); }
+    }
+    @keyframes footerJp {
+      0%, 42% { opacity: 1; transform: translateY(0); }
+      48%, 94% { opacity: 0; transform: translateY(-2px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes footerEn {
+      0%, 42% { opacity: 0; transform: translateY(2px); }
+      48%, 94% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(2px); }
+    }
+    .heart-icon { animation: heartbeat 2.2s ease-in-out infinite; transform-origin: 450px 78px; }
+    .ft-jp { animation: footerJp 9s ease-in-out infinite; }
+    .ft-en { animation: footerEn 9s ease-in-out infinite; }
+  </style>
 
-  <!-- Floating petals (subtle purple) -->
-  <g class="petal-1">
-    <ellipse cx="150" cy="10" rx="3" ry="5" fill="#C9A8F0" opacity="0.2" transform="rotate(25 150 10)"/>
+  <rect width="900" height="130" rx="10" fill="url(#footerBg)" stroke="#261d38" stroke-width="1"/>
+
+  <!-- Subtle floating petals in footer -->
+  <circle cx="150" cy="40" r="2.5" fill="#C084FC" opacity="0.3"/>
+  <circle cx="750" cy="50" r="3" fill="#C084FC" opacity="0.25"/>
+  <circle cx="820" cy="85" r="2" fill="#D8B4FE" opacity="0.2"/>
+  <circle cx="90" cy="95" r="2.5" fill="#D8B4FE" opacity="0.25"/>
+
+  <!-- Motto with translation -->
+  <g class="ft-jp">
+    <text x="450" y="42" text-anchor="middle" fill="#C084FC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', serif" font-size="13" letter-spacing="4">
+      焦らず、歩みを止めず  •  七転び八起き
+    </text>
   </g>
-  <g class="petal-2">
-    <ellipse cx="680" cy="5" rx="2.5" ry="4.5" fill="#B48EE0" opacity="0.15" transform="rotate(-15 680 5)"/>
-  </g>
-  <g class="petal-3">
-    <ellipse cx="400" cy="8" rx="2" ry="4" fill="#C9A8F0" opacity="0.15" transform="rotate(40 400 8)"/>
-  </g>
-  <g class="petal-4">
-    <ellipse cx="820" cy="12" rx="2.5" ry="4" fill="#9B72CF" opacity="0.18" transform="rotate(-30 820 12)"/>
+  <g class="ft-en">
+    <text x="450" y="42" text-anchor="middle" fill="#DDD6FE" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" letter-spacing="4" font-weight="600">
+      TAKE YOUR TIME  •  NEVER STOP LEARNING
+    </text>
   </g>
 
-  <!-- Main text -->
-  <text x="450" y="38" text-anchor="middle" class="main-text fade-in">TAKE YOUR TIME · NEVER STOP LEARNING</text>
-
-  <!-- Japanese proverb -->
-  <text x="450" y="62" text-anchor="middle" class="proverb fade-in-delay">七転び八起き — Fall seven times, stand up eight</text>
-
-  <!-- Blossom emoji with heartbeat -->
-  <g class="heartbeat fade-in-delay">
-    <text x="450" y="88" text-anchor="middle" class="blossom">🌸</text>
+  <!-- Animated Blossom -->
+  <g class="heart-icon">
+    <text x="450" y="82" text-anchor="middle" font-size="18">🌸</text>
   </g>
 
-  <!-- Brand -->
-  <text x="450" y="115" text-anchor="middle" class="brand fade-in-delay2">SICKIALLY © 2026</text>
+  <!-- Brand Signature -->
+  <text x="450" y="112" text-anchor="middle" fill="#A79BB7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" letter-spacing="3" font-weight="500">
+    SICKIALLY  ©  2026
+  </text>
 </svg>

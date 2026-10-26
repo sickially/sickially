@@ -1,108 +1,144 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 270" width="900" height="270">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280">
   <defs>
-    <!-- Fade-slide animation for each line -->
-    <style>
-      @keyframes fadeSlideIn {
-        from { opacity: 0; transform: translateX(-18px); }
-        to { opacity: 1; transform: translateX(0); }
-      }
-      @keyframes borderGlow {
-        0%, 100% { opacity: 0.7; }
-        50% { opacity: 1; }
-      }
-      @keyframes dotPulse {
-        0%, 100% { opacity: 0.25; }
-        50% { opacity: 0.5; }
-      }
-      @keyframes softFloat {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-2px); }
-      }
-      .line1 { animation: fadeSlideIn 0.6s ease-out 0.2s both; }
-      .line2 { animation: fadeSlideIn 0.6s ease-out 0.4s both; }
-      .line3 { animation: fadeSlideIn 0.6s ease-out 0.6s both; }
-      .line4 { animation: fadeSlideIn 0.6s ease-out 0.8s both; }
-      .line5 { animation: fadeSlideIn 0.6s ease-out 1.0s both; }
-      .line6 { animation: fadeSlideIn 0.6s ease-out 1.2s both; }
-      .accent-border { animation: borderGlow 4s ease-in-out infinite; }
-      .ink-dot { animation: dotPulse 5s ease-in-out infinite; }
-      .kanji-watermark { animation: softFloat 8s ease-in-out infinite; }
-    </style>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141022"/>
+      <stop offset="100%" stop-color="#110d1c"/>
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#C084FC"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
   </defs>
 
-  <!-- Card background -->
-  <rect x="0" y="0" width="900" height="270" rx="10" ry="10" fill="#0d0b12" stroke="#201a2d" stroke-width="1.5"/>
+  <style>
+    /* Gradual translation switch for about lines */
+    @keyframes lineJp {
+      0%, 42% { opacity: 1; transform: translateY(0); }
+      48%, 94% { opacity: 0; transform: translateY(-3px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes lineEn {
+      0%, 42% { opacity: 0; transform: translateY(3px); }
+      48%, 94% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(3px); }
+    }
+    .row-jp { animation: lineJp 10s ease-in-out infinite; }
+    .row-en { animation: lineEn 10s ease-in-out infinite; }
 
-  <!-- Trans flag subtle indicator bars (top-right corner) -->
-  <g opacity="0.5">
-    <rect x="820" y="12" width="65" height="3" rx="1.5" fill="#5BCEFA"/>
-    <rect x="820" y="18" width="65" height="3" rx="1.5" fill="#F5A9B8"/>
-    <rect x="820" y="24" width="65" height="3" rx="1.5" fill="#FFFFFF"/>
-    <rect x="820" y="30" width="65" height="3" rx="1.5" fill="#F5A9B8"/>
-    <rect x="820" y="36" width="65" height="3" rx="1.5" fill="#5BCEFA"/>
+    .line-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', sans-serif;
+      font-size: 15px;
+      fill: #DDD6FE;
+    }
+    .highlight { fill: #C084FC; font-weight: 600; }
+  </style>
+
+  <!-- Background card -->
+  <rect x="0" y="0" width="900" height="280" rx="12" fill="url(#cardGrad)" stroke="#2E2445" stroke-width="1.5"/>
+
+  <!-- Left accent bar -->
+  <rect x="0" y="0" width="5" height="280" rx="2.5" fill="url(#borderGrad)"/>
+
+  <!-- Subtle Trans flag indicator (top right) -->
+  <g opacity="0.65" transform="translate(800, 16)">
+    <rect x="0" y="0" width="70" height="3.5" rx="1.5" fill="#5BCEFA"/>
+    <rect x="0" y="5.5" width="70" height="3.5" rx="1.5" fill="#F5A9B8"/>
+    <rect x="0" y="11" width="70" height="3.5" rx="1.5" fill="#FFFFFF"/>
+    <rect x="0" y="16.5" width="70" height="3.5" rx="1.5" fill="#F5A9B8"/>
+    <rect x="0" y="22" width="70" height="3.5" rx="1.5" fill="#5BCEFA"/>
   </g>
 
-  <!-- Left accent border -->
-  <rect class="accent-border" x="0" y="0" width="3.5" height="270" rx="2" fill="#9B72CF"/>
+  <!-- Kanji watermark in background -->
+  <text x="800" y="220" font-family="serif" font-size="110" fill="#C084FC" opacity="0.04" text-anchor="middle">心</text>
 
-  <!-- Kanji watermark (very low opacity) -->
-  <g class="kanji-watermark">
-    <text x="780" y="220" font-family="'Yu Mincho', 'Hiragino Mincho Pro', serif" font-size="100" fill="#9B72CF" opacity="0.03" text-anchor="middle">道</text>
-  </g>
-
-  <!-- Ink dots in purple (subtle decoration) -->
-  <circle class="ink-dot" cx="860" cy="255" r="2" fill="#9B72CF" opacity="0.25" style="animation-delay: 0s;"/>
-  <circle class="ink-dot" cx="872" cy="250" r="1.5" fill="#9B72CF" opacity="0.2" style="animation-delay: 1.5s;"/>
-  <circle class="ink-dot" cx="850" cy="248" r="1" fill="#9B72CF" opacity="0.15" style="animation-delay: 3s;"/>
-  <circle class="ink-dot" cx="878" cy="258" r="1.2" fill="#B48EE0" opacity="0.18" style="animation-delay: 2s;"/>
-
-  <!-- Content lines -->
+  <!-- Content Lines with bilingual smooth translation -->
   <!-- Line 1 -->
-  <g class="line1">
-    <text x="30" y="48" font-family="'Segoe UI', 'Noto Sans', sans-serif" font-size="15" fill="#d0d0d0">
-      <tspan>🏳️‍⚧️  </tspan>
-      <tspan fill="#9B72CF" font-weight="600">She/Her</tspan>
-      <tspan> — Trans girl proudly coding her way through life</tspan>
-    </text>
+  <g transform="translate(35, 52)">
+    <text class="line-text" x="0" y="0">🏳️‍⚧️</text>
+    <g class="row-jp">
+      <text class="line-text" x="32" y="0">
+        <tspan class="highlight">彼女 (She/Her)</tspan> — 自分らしく堂々とコードを紡ぐトランスガール
+      </text>
+    </g>
+    <g class="row-en">
+      <text class="line-text" x="32" y="0">
+        <tspan class="highlight">She/Her</tspan> — Trans girl proudly coding her way through life
+      </text>
+    </g>
   </g>
 
   <!-- Line 2 -->
-  <g class="line2">
-    <text x="30" y="90" font-family="'Segoe UI', 'Noto Sans', sans-serif" font-size="15" fill="#d0d0d0">
-      <tspan>⛩️  Front-End Developer crafting beautiful digital experiences</tspan>
-    </text>
+  <g transform="translate(35, 92)">
+    <text class="line-text" x="0" y="0">⛩️</text>
+    <g class="row-jp">
+      <text class="line-text" x="32" y="0">
+        <tspan class="highlight">フロントエンド開発</tspan> — 心に響く美しいデジタル体験を創り出す
+      </text>
+    </g>
+    <g class="row-en">
+      <text class="line-text" x="32" y="0">
+        <tspan class="highlight">Front-End Developer</tspan> crafting beautiful digital experiences
+      </text>
+    </g>
   </g>
 
   <!-- Line 3 -->
-  <g class="line3">
-    <text x="30" y="132" font-family="'Segoe UI', 'Noto Sans', sans-serif" font-size="15" fill="#d0d0d0">
-      <tspan>🎵  Soundtrack of choice: </tspan>
-      <tspan fill="#9B72CF" font-weight="600">Metalcore</tspan>
-    </text>
+  <g transform="translate(35, 132)">
+    <text class="line-text" x="0" y="0">🎵</text>
+    <g class="row-jp">
+      <text class="line-text" x="32" y="0">
+        日々のサウンドトラック: <tspan class="highlight">メタルコア (Metalcore)</tspan>
+      </text>
+    </g>
+    <g class="row-en">
+      <text class="line-text" x="32" y="0">
+        Soundtrack of choice: <tspan class="highlight">Metalcore</tspan>
+      </text>
+    </g>
   </g>
 
   <!-- Line 4 -->
-  <g class="line4">
-    <text x="30" y="174" font-family="'Segoe UI', 'Noto Sans', sans-serif" font-size="15" fill="#d0d0d0">
-      <tspan>📜  Always walking the path of learning — </tspan>
-      <tspan fill="#B48EE0" font-family="'Yu Mincho', 'Hiragino Mincho Pro', serif" font-size="15">七転び八起き</tspan>
-    </text>
+  <g transform="translate(35, 172)">
+    <text class="line-text" x="0" y="0">📜</text>
+    <g class="row-jp">
+      <text class="line-text" x="32" y="0">
+        常に学びの道を歩む — <tspan class="highlight">七転び八起き</tspan>
+      </text>
+    </g>
+    <g class="row-en">
+      <text class="line-text" x="32" y="0">
+        Always walking the path of learning — <tspan class="highlight">Fall 7 times, stand up 8</tspan>
+      </text>
+    </g>
   </g>
 
   <!-- Line 5 -->
-  <g class="line5">
-    <text x="30" y="216" font-family="'Segoe UI', 'Noto Sans', sans-serif" font-size="15" fill="#d0d0d0">
-      <tspan>🌸  Believer that </tspan>
-      <tspan fill="#9B72CF" font-style="italic">every encounter is once in a lifetime</tspan>
-      <tspan> — </tspan>
-      <tspan fill="#B48EE0" font-family="'Yu Mincho', 'Hiragino Mincho Pro', serif" font-size="15">一期一会</tspan>
-    </text>
+  <g transform="translate(35, 212)">
+    <text class="line-text" x="0" y="0">🌸</text>
+    <g class="row-jp">
+      <text class="line-text" x="32" y="0">
+        全ての出会いは一生に一度の奇跡 — <tspan class="highlight">一期一会</tspan>
+      </text>
+    </g>
+    <g class="row-en">
+      <text class="line-text" x="32" y="0">
+        Believer that <tspan class="highlight" font-style="italic">every encounter is once in a lifetime</tspan> — 一期一会
+      </text>
+    </g>
   </g>
 
   <!-- Line 6 -->
-  <g class="line6">
-    <text x="30" y="252" font-family="'Segoe UI', 'Noto Sans', sans-serif" font-size="15" fill="#d0d0d0">
-      <tspan>🗾  Fascinated by Japanese culture, art, and philosophy</tspan>
-    </text>
+  <g transform="translate(35, 252)">
+    <text class="line-text" x="0" y="0">🗾</text>
+    <g class="row-jp">
+      <text class="line-text" x="32" y="0">
+        日本の美学・文化・哲学に深く魅せられて
+      </text>
+    </g>
+    <g class="row-en">
+      <text class="line-text" x="32" y="0">
+        Fascinated by Japanese culture, art, and philosophy
+      </text>
+    </g>
   </g>
 </svg>
