@@ -37,7 +37,7 @@
 ## ✦ よく使う言語 &nbsp;<sub>most used languages</sub>
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sickially&layout=compact&hide_border=true&bg_color=0d0b1a&title_color=b388ff&text_color=d1c4e9&langs_count=6&title_color=b388ff" alt="Top languages" />
+  <img src="./assets/langs.svg" alt="Top languages" width="420" />
 </div>
 
 <br/>
