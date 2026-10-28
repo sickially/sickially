@@ -27,7 +27,7 @@
 
 ## ✦ 勉強中 &nbsp;<sub>currently learning</sub>
 
-<p>
+<p align="center" >
   <img src="https://img.shields.io/badge/C%23-7c4dff?style=for-the-badge&logo=csharp&logoColor=white" alt="C#" />
   <img src="https://img.shields.io/badge/Svelte-9575cd?style=for-the-badge&logo=svelte&logoColor=white" alt="Svelte" />
 </p>
